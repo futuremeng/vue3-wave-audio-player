@@ -1,6 +1,14 @@
+<!--
+ * @Author: be_loving@163.com 
+ * @Date: 2024-10-22 18:49:23
+ * @LastEditors: be_loving@163.com 
+ * @LastEditTime: 2024-10-23 13:39:59
+ * @FilePath: /vue3-wave-audio-player/README.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 # Vue 3 wave-audio-player
 
-![Image demo](https://github.com/marifuli/vue3-wave-audio-player/raw/master/preview.png)
+![Image demo](https://github.com/futuremeng/vue3-wave-audio-player/raw/master/preview.png)
 
 ## NPM install :
 ```
@@ -76,7 +84,7 @@ Check [MDN Doc](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
 
 ### Report bug or Suggestion
 please send a mail at imdarif122@mail.com or contact@arifdev.com. 
-You can also open any issue in the [GitHub](https://github.com/marifuli/vue3-wave-audio-player) page. Thanks for using this package.
+You can also open any issue in the [GitHub](https://github.com/futuremeng/vue3-wave-audio-player) page. Thanks for using this package.
 
 ### Inspired by:
 [wave-path-audio-player](https://www.npmjs.com/package/wave-audio-path-player) package
