@@ -2,7 +2,7 @@
  * @Author: be_loving@163.com 
  * @Date: 2024-10-23 13:32:11
  * @LastEditors: be_loving@163.com 
- * @LastEditTime: 2024-10-23 14:46:23
+ * @LastEditTime: 2024-10-24 20:43:15
  * @FilePath: /vue3-wave-audio-player/examples/views/home.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -13,7 +13,7 @@
       :wave_width="250"
       :wave_height="40"
       wave_type="mirror"
-      src="http://m701.music.126.net/20241023150909/9e1d0da9dc65beec4c626fee14b65686/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/11780012672/f264/9861/56fc/bba3a062ee035638eb2f424bebba5ed9.mp3"
+      src="http://music.163.com/song/media/outer/url?id=317151.mp3"
       :disable_seeking="true"
       @tried_to_seek="tried_to_seek"
       />  
@@ -23,7 +23,7 @@
       :wave_width="250"
       :wave_height="40"
       :wave_options='{"samples":50}' 
-      src="http://m701.music.126.net/20241023150909/9e1d0da9dc65beec4c626fee14b65686/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/11780012672/f264/9861/56fc/bba3a062ee035638eb2f424bebba5ed9.mp3"
+      src="http://music.163.com/song/media/outer/url?id=317151.mp3"
       :load_audio_onmount="false"
       />  
       <Vue3WaveAudioPlayer
@@ -31,13 +31,13 @@
       :wave_width="250"
       :wave_height="40"
       :wave_options='{"samples":40,"type":"steps","width":192,"height":40}'
-      src="http://m701.music.126.net/20241023150909/9e1d0da9dc65beec4c626fee14b65686/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/11780012672/f264/9861/56fc/bba3a062ee035638eb2f424bebba5ed9.mp3"
+      src="http://music.163.com/song/media/outer/url?id=317151.mp3"
       />  
       <Vue3WaveAudioPlayer
       :wave_width="250"
       :wave_height="40"
       :wave_options="example_options"
-      src="http://m701.music.126.net/20241023150909/9e1d0da9dc65beec4c626fee14b65686/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/11780012672/f264/9861/56fc/bba3a062ee035638eb2f424bebba5ed9.mp3"
+      src="http://music.163.com/song/media/outer/url?id=317151.mp3"
       />  
     </div>
   </template>
