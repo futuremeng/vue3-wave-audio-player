@@ -1,6 +1,5 @@
 <template>
   <div part="player" ref="player" class="player">
-    <div id="title" v-show="title">{{ title }}</div>
     <button id="play" part="play" ref="play" v-if="loadingAudioData">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -59,6 +58,9 @@
       {{ currentTimeContainer_textContent }}
     </div>
     <div id="slider" part="slider" ref="slider">
+      <div id="title" v-if="title">
+        {{ title }}
+      </div>
       <svg
         id="svg"
         part="svg"
@@ -353,8 +355,8 @@ export default {
         this.player_options.height = this.waveOptions.height
       }
     }
-    if (this.waveanimation) {
-      this.animation = this.waveanimation
+    if (this.waveAnimation) {
+      this.animation = this.waveAnimation
     }
     //- finish seettings
     this.clipPathX += '-' + Math.random().toString(36).slice(2)
@@ -1314,6 +1316,16 @@ export default {
   stroke-linejoin: round;
   transition: 0.2s;
 }
+#title {
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  color: #858a8d;
+  margin: 0px 10px;
+  font-size: 16px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  overflow: visible;
+}
 #svg {
   margin: 0 10px;
   overflow: visible;
@@ -1321,19 +1333,19 @@ export default {
   fill: none;
 }
 #path1 {
-  stroke: #dadcdd;
+  stroke: #f1f1f1;
   overflow: visible;
   stroke-linecap: round;
 }
 #path2 {
-  stroke: #858a8d;
+  stroke: #e6e6e6;
   overflow: visible;
   stroke-linecap: round;
 }
 #slider {
   position: relative;
 }
-#title,
+
 #duration,
 #current-time {
   position: relative;
