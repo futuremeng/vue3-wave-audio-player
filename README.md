@@ -2,7 +2,7 @@
  * @Author: be_loving@163.com 
  * @Date: 2024-10-22 18:49:23
  * @LastEditors: be_loving@163.com 
- * @LastEditTime: 2024-10-23 14:50:32
+ * @LastEditTime: 2024-10-28 13:35:12
  * @FilePath: /vue3-wave-audio-player/README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -10,13 +10,15 @@
 
 ![Image demo](https://github.com/futuremeng/vue3-wave-audio-player/raw/master/preview.png)
 
-## NPM install :
-```
+## NPM install
+
+``` sh
 npm i @futuremeng/vue3-wave-audio-player
 ```
 
-### Import ans use: 
-```
+### Import ans use
+
+``` html
 <template>
   <div style="max-width: 250px">
     <Vue3WaveAudioPlayer
@@ -52,9 +54,11 @@ export default {
 }
 </script>
 ```
+
 ### Attributes
+
 Name | Required | Type | Description
---- | --- | --- | --- 
+--- | --- | --- | ---
 src | True | audio file | Source path to audio file
 wave_width | True | Integer | Width of the Waves. (Not responsive, Also remember that the buttons and the timing strings will take extra ~250px. For example, if(container === 500px) => wave_width = 500 - 250 = 250  )
 wave_height | True | Integer | Height of the waves (Not Responsive)
@@ -64,12 +68,15 @@ load_audio_onmount | False | Boolean | Load the path and audio data on mounted
 disable_seeking | False | Boolean | Disable time seeking
 
 ### Events
+
 I have added all the events that html has in the audio tag with a "on_" prefix.
 Additional events:
+
 Name | Required | Type | Return | Description
 --- | --- | --- | --- | ---  
 tried_to_seek | False | Func  | Boolean | Triggered when user try to seek time
-```
+
+``` html
 // Example 
 <Vue3WaveAudioPlayer
 :wave_width="250"
@@ -80,13 +87,15 @@ src="/samples/file.mp3"
 @on_ended="customCallback" // ... many more
 /> 
 ```
+
 Check [MDN Doc](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio) for all the events.
 
 ### Report bug or Suggestion
-please send a mail at futuremeng@gmail.com or imdarif122@mail.com or contact@arifdev.com. 
+
+please send a mail at <futuremeng@gmail.com> or <imdarif122@mail.com> or <contact@arifdev.com>.
 You can also open any issue in the [GitHub](https://github.com/futuremeng/vue3-wave-audio-player) page. Thanks for using this package.
 
-### Inspired by:
+### Inspired by
+
 [wave-path-audio-player](https://www.npmjs.com/package/wave-audio-path-player) package
 [waveform-path](https://jerosoler.github.io/waveform-path) package
- 
