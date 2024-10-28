@@ -1,5 +1,6 @@
 <template>
   <div part="player" ref="player" class="player">
+    <div id="title" v-show="title">{{ title }}</div>
     <button id="play" part="play" ref="play" v-if="loadingAudioData">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +50,12 @@
         ></path>
       </svg>
     </button>
-    <div id="current-time" part="currenttime" ref="currenttime">
+    <div
+      id="current-time"
+      part="currenttime"
+      ref="currenttime"
+      v-show="currentTimeVisible"
+    >
       {{ currentTimeContainer_textContent }}
     </div>
     <div id="slider" part="slider" ref="slider">
@@ -148,7 +154,9 @@
         @change="sliderChange"
       />
     </div>
-    <div id="duration" part="duration">{{ durationContainer_textContent }}</div>
+    <div id="duration" part="duration" v-show="durationTimeVisible">
+      {{ durationContainer_textContent }}
+    </div>
   </div>
 
   <!-- 
@@ -211,6 +219,10 @@ export default {
     'onEnded',
   ],
   props: {
+    title: {
+      type: String,
+      default: '',
+    },
     indexSync: {
       type: Number,
       default: 0,
@@ -250,6 +262,14 @@ export default {
     disableSeeking: {
       type: Boolean,
       default: false,
+    },
+    currentTimeVisible: {
+      type: Boolean,
+      default: true,
+    },
+    durationTimeVisible: {
+      type: Boolean,
+      default: true,
     },
   },
   watch: {
@@ -322,15 +342,15 @@ export default {
     this.player_options.width = this.waveWidth
     this.player_options.height = this.waveHeight
     this.player_options.type = this.wavetype
-    if (this.waveoptions) {
-      if (this.waveoptions.samples) {
-        this.player_options.samples = this.waveoptions.samples
+    if (this.waveOptions) {
+      if (this.waveOptions.samples) {
+        this.player_options.samples = this.waveOptions.samples
       }
-      if (this.waveoptions.width) {
-        this.player_options.width = this.waveoptions.width
+      if (this.waveOptions.width) {
+        this.player_options.width = this.waveOptions.width
       }
-      if (this.waveoptions.height) {
-        this.player_options.height = this.waveoptions.height
+      if (this.waveOptions.height) {
+        this.player_options.height = this.waveOptions.height
       }
     }
     if (this.waveanimation) {
@@ -1313,6 +1333,7 @@ export default {
 #slider {
   position: relative;
 }
+#title,
 #duration,
 #current-time {
   position: relative;
