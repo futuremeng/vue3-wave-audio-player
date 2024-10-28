@@ -211,6 +211,14 @@ export default {
     'onEnded',
   ],
   props: {
+    indexSync: {
+      type: Number,
+      default: 0,
+    },
+    indexSelf: {
+      type: Number,
+      default: 0,
+    },
     waveWidth: {
       type: Number,
       default: 200,
@@ -242,6 +250,17 @@ export default {
     disableSeeking: {
       type: Boolean,
       default: false,
+    },
+  },
+  watch: {
+    indexSync: {
+      handler(newVal) {
+        if (newVal !== this.indexSelf) {
+          if (!this.audio.paused) {
+            this.playPause()
+          }
+        }
+      },
     },
   },
   data() {
