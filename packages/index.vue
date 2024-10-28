@@ -454,14 +454,16 @@ export default {
       return fetch(url)
         .then((res) => {
           return res.blob().then((raw) => {
+            // console.log(res.headers.get('Content-Type'))
+            // oss return application/x-www-form-urlencoded
             // console.log( !res.headers.get('Content-Type').includes('audio/') )
-            if (!res.headers.get('Content-Type').includes('audio/')) {
-              this.$emit('onError', {
-                message: 'Invalid audio type',
-                type: 'not_audio',
-              })
-              return null
-            }
+            // if (!res.headers.get('Content-Type').includes('audio/')) {
+            //   this.$emit('onError', {
+            //     message: 'Invalid audio type',
+            //     type: 'not_audio',
+            //   })
+            //   return null
+            // }
             return raw
           })
           // return res.arrayBuffer()
