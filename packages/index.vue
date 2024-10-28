@@ -1310,6 +1310,7 @@ export default {
   left: 0;
 }
 input[type='range'] {
+  appearance: none;
   -webkit-appearance: none;
   width: 100%;
   background: transparent;
