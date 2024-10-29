@@ -171,7 +171,7 @@
 
   <!-- 
       <audio :src="src" ref="audio_tag"
-      @loadedmetadata="loadSong" 
+      @loadedmetadata="loadMetadata" 
   -->
   <audio
     ref="audio_tag"
@@ -300,7 +300,7 @@ export default {
   data() {
     return {
       animation: false,
-      player_options: {
+      playerOptions: {
         samples: 40,
         type: null,
         width: null,
@@ -353,22 +353,23 @@ export default {
       loadingAudioData: false,
       loadedAudioData: false,
       canPlay: false,
+      waiting: false,
     }
   },
   beforeMount() {
     //- setting up the options
-    this.player_options.width = this.waveWidth
-    this.player_options.height = this.waveHeight
-    this.player_options.type = this.wavetype
+    this.playerOptions.width = this.waveWidth
+    this.playerOptions.height = this.waveHeight
+    this.playerOptions.type = this.waveType
     if (this.waveOptions) {
       if (this.waveOptions.samples) {
-        this.player_options.samples = this.waveOptions.samples
+        this.playerOptions.samples = this.waveOptions.samples
       }
       if (this.waveOptions.width) {
-        this.player_options.width = this.waveOptions.width
+        this.playerOptions.width = this.waveOptions.width
       }
       if (this.waveOptions.height) {
-        this.player_options.height = this.waveOptions.height
+        this.playerOptions.height = this.waveOptions.height
       }
     }
     if (this.waveAnimation) {
@@ -405,7 +406,7 @@ export default {
       this.canPlay = true
       this.$emit('onCanplay', $event)
     },
-    loadSong($event) {
+    loadMetadata($event) {
       // done
       console.log(this.audio.duration)
       this.durationContainer_textContent = this.calculateTime(
@@ -492,11 +493,11 @@ export default {
     async runAudioPath() {
       // this.audioData =
       await this.getAudioData(this.src)
-      //   this.loadSong()
+      //   this.loadMetadata()
       //   this.svgDraw();
     },
     svgDraw() {
-      const path = this.linearPath(this.audioData, this.player_options)
+      const path = this.linearPath(this.audioData, this.playerOptions)
       // console.log(path)
       if (!this.animation) {
         this.path1_d = path
@@ -539,7 +540,7 @@ export default {
           // return res.arrayBuffer()
         })
         .then((bl) => {
-          this.waiting_to_load = false
+          this.waiting = false
           let src = URL.createObjectURL(bl)
           this.audio.src = src
           let fileReader = new FileReader()
@@ -551,9 +552,9 @@ export default {
                 setTimeout(() => {
                   this.loadingAudioData = false
                   this.loadedAudioData = true
-                  this.loadSong()
+                  this.loadMetadata()
                   this.svgDraw()
-                }, 1000)
+                }, 3000)
               },
               (err) => {
                 this.loadingAudioData = false
