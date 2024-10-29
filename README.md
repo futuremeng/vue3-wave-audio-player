@@ -2,7 +2,7 @@
  * @Author: be_loving@163.com 
  * @Date: 2024-10-22 18:49:23
  * @LastEditors: be_loving@163.com 
- * @LastEditTime: 2024-10-29 08:29:05
+ * @LastEditTime: 2024-10-29 09:17:05
  * @FilePath: /vue3-wave-audio-player/README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -93,10 +93,12 @@ wave-type | False | String | Type of wave. (Not working yet)
 wave-options | False | Object | Set settings for the waves (Not working yet)
 load-audio-onmount | False | Boolean | Load the path and audio data on mounted
 disable-seeking | False | Boolean | Disable time seeking
-current-time-visible | True | Boolean | Show current time
-duration-time-visible | True | Boolean | Show duration time
+current-time-visible | False | Boolean | Show current time
+duration-time-visible | False | Boolean | Show duration time
 index-self | False | Integer | Index of the player (for multiple players)
 index-sync | False | Integer | Index of the playing player to sync with (for multiple players)
+disable-seeking | False | Boolean | Disable seeking
+load-audio-onmount | False | Boolean | Load the path and audio data on mounted
 
 ### Events
 
@@ -106,6 +108,7 @@ Additional events:
 Name | Required | Type | Return | Description
 --- | --- | --- | --- | ---  
 tried_to_seek | False | Func  | Boolean | Triggered when user try to seek time
+on-play | False | Func  | Boolean | Triggered when user click on play button
 
 ``` html
 // Example 
