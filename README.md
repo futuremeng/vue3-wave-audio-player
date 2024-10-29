@@ -2,7 +2,7 @@
  * @Author: be_loving@163.com 
  * @Date: 2024-10-22 18:49:23
  * @LastEditors: be_loving@163.com 
- * @LastEditTime: 2024-10-28 13:35:12
+ * @LastEditTime: 2024-10-29 08:25:41
  * @FilePath: /vue3-wave-audio-player/README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -22,24 +22,45 @@ npm i @futuremeng/vue3-wave-audio-player
 <template>
   <div style="max-width: 250px">
     <Vue3WaveAudioPlayer
-    :wave_width="250"
-    :wave_height="40"
-    wave_type="mirror"
+    :wave-width="250"
+    :wave-height="40"
+    wave-type="mirror"
     src="/samples/file.mp3"
+    :index-self="0"
+    :index-sync="index"
+    @on-play="index = 0"
+    title="第一交响曲"
+    :wave-animation="false"
+    :current-time-visible="false"
+    :duration-time-visible="false"
     />  
     <!-- optional wave_options -->
     <Vue3WaveAudioPlayer
-    :wave_width="250"
-    :wave_height="40"
-    :wave_options='{"samples":50}' 
+    :wave-width="250"
+    :wave-height="40"
+    :wave-options='{"samples":50}' 
     src="/samples/file.mp3"
-    :load_audio_onmount="false"
+    :load-audio-onmount="false"
+    :index-self="1"
+    :index-sync="index"
+    @on-play="index = 1"
+    title="第二交响曲"
+    :wave-animation="false"
+    :current-time-visible="false"
+    :duration-time-visible="false"
     />  
     <Vue3WaveAudioPlayer
-    :wave_width="250"
-    :wave_height="40"
-    :wave_options='{"samples":40,"type":"steps","width":192,"height":40}'
+    :wave-width="250"
+    :wave-height="40"
+    :wave-options='{"samples":40,"type":"steps","width":192,"height":40}'
     src="/samples/file.mp3"
+    :index-self="2"
+    :index-sync="index"
+    @on-play="index = 2"
+    title="第三交响曲"
+    :wave-animation="false"
+    :current-time-visible="false"
+    :duration-time-visible="false"
     />   
   </div>
 </template>
@@ -51,6 +72,11 @@ export default {
   components: {
     Vue3WaveAudioPlayer
   },
+  data() {
+    return {
+      index:0
+    }
+  }
 }
 </script>
 ```
@@ -60,12 +86,16 @@ export default {
 Name | Required | Type | Description
 --- | --- | --- | ---
 src | True | audio file | Source path to audio file
-wave_width | True | Integer | Width of the Waves. (Not responsive, Also remember that the buttons and the timing strings will take extra ~250px. For example, if(container === 500px) => wave_width = 500 - 250 = 250  )
-wave_height | True | Integer | Height of the waves (Not Responsive)
-wave_type | False | String | Type of wave. (Not working yet)
-wave_options | False | Object | Set settings for the waves (Not working yet)
-load_audio_onmount | False | Boolean | Load the path and audio data on mounted
-disable_seeking | False | Boolean | Disable time seeking
+wave-width | True | Integer | Width of the Waves. (Not responsive, Also remember that the buttons and the timing strings will take extra ~250px. For example, if(container === 500px) => wave_width = 500 - 250 = 250  )
+wave-height | True | Integer | Height of the waves (Not Responsive)
+wave-type | False | String | Type of wave. (Not working yet)
+wave-options | False | Object | Set settings for the waves (Not working yet)
+load-audio-onmount | False | Boolean | Load the path and audio data on mounted
+disable-seeking | False | Boolean | Disable time seeking
+current-time-visible | True | Boolean | Show current time
+duration-time-visible | True | Boolean | Show duration time
+index-self | False | Integer | Index of the player (for multiple players)
+index-sync | False | Integer | Index of the playing player to sync with (for multiple players)
 
 ### Events
 
@@ -79,8 +109,8 @@ tried_to_seek | False | Func  | Boolean | Triggered when user try to seek time
 ``` html
 // Example 
 <Vue3WaveAudioPlayer
-:wave_width="250"
-:wave_height="40"
+:wave-width="250"
+:wave-height="40"
 src="/samples/file.mp3"
 
 @on_error="onError"
