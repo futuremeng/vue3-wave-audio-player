@@ -2,7 +2,7 @@
  * @Author: be_loving@163.com 
  * @Date: 2024-10-22 18:49:23
  * @LastEditors: be_loving@163.com 
- * @LastEditTime: 2024-10-29 08:25:41
+ * @LastEditTime: 2024-10-29 08:29:05
  * @FilePath: /vue3-wave-audio-player/README.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -74,7 +74,7 @@ export default {
   },
   data() {
     return {
-      index:0
+      index: 0
     }
   }
 }
@@ -86,7 +86,8 @@ export default {
 Name | Required | Type | Description
 --- | --- | --- | ---
 src | True | audio file | Source path to audio file
-wave-width | True | Integer | Width of the Waves. (Not responsive, Also remember that the buttons and the timing strings will take extra ~250px. For example, if(container === 500px) => wave_width = 500 - 250 = 250  )
+title | False | String | Title of the player
+wave-width | True | Integer | Width of the Waves. (Not responsive, Also remember that the buttons and the timing strings will take extra ~250px. For example, if(container === 500px) => wave-width = 500 - 250 = 250  )
 wave-height | True | Integer | Height of the waves (Not Responsive)
 wave-type | False | String | Type of wave. (Not working yet)
 wave-options | False | Object | Set settings for the waves (Not working yet)
@@ -99,7 +100,7 @@ index-sync | False | Integer | Index of the playing player to sync with (for mul
 
 ### Events
 
-I have added all the events that html has in the audio tag with a "on_" prefix.
+I have added all the events that html has in the audio tag with a "on-" prefix.
 Additional events:
 
 Name | Required | Type | Return | Description
@@ -113,8 +114,8 @@ tried_to_seek | False | Func  | Boolean | Triggered when user try to seek time
 :wave-height="40"
 src="/samples/file.mp3"
 
-@on_error="onError"
-@on_ended="customCallback" // ... many more
+@on-error="onError"
+@on-ended="customCallback" // ... many more
 /> 
 ```
 
