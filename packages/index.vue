@@ -425,23 +425,24 @@ export default {
       if (!this.loadAudioOnmount && !this.loadedAudioData) {
         return this.runAudioPath()
       }
-      if (!this.canPlay) {
-        return
-      }
-      console.log('this.audio.paused', this.audio.paused)
-      if (this.audio.paused) {
-        console.log('play')
-        this.audio.play()
-        this.svg.unpauseAnimations()
-        this.path2.style.display = 'block'
-        this.audioPaused = false
-        this.raf = requestAnimationFrame(this.whilePlaying)
+      if (this.canPlay) {
+        console.log('this.audio.paused', this.audio.paused)
+        if (this.audio.paused) {
+          console.log('play')
+          this.audio.play()
+          this.svg.unpauseAnimations()
+          this.path2.style.display = 'block'
+          this.audioPaused = false
+          this.raf = requestAnimationFrame(this.whilePlaying)
+        } else {
+          console.log('pause')
+          this.audio.pause()
+          this.svg.pauseAnimations()
+          this.audioPaused = true
+          cancelAnimationFrame(this.raf)
+        }
       } else {
-        console.log('pause')
-        this.audio.pause()
-        this.svg.pauseAnimations()
-        this.audioPaused = true
-        cancelAnimationFrame(this.raf)
+        this.setTimeout(this.playPause(), 1000)
       }
     },
     sliderInput() {
