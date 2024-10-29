@@ -183,6 +183,7 @@
     @emptied="$emit('onEmptied', $event)"
     @error="$emit('onError', $event)"
     @loadeddata="$emit('onLoadeddata', $event)"
+    @loadedmetadata="onLoadedmetadata($event)"
     @loadstart="$emit('onLoadstart', $event)"
     @pause="$emit('onPause', $event)"
     @play="$emit('onPlay', $event)"
@@ -406,7 +407,7 @@ export default {
       this.canPlay = true
       this.$emit('onCanplay', $event)
     },
-    loadMetadata($event) {
+    onLoadedmetadata($event) {
       // done
       console.log(this.audio.duration)
       this.durationContainer_textContent = this.calculateTime(
@@ -549,12 +550,15 @@ export default {
               fileReader.result,
               (bufferData) => {
                 this.audioData = bufferData
-                setTimeout(() => {
-                  this.loadingAudioData = false
-                  this.loadedAudioData = true
-                  this.loadMetadata()
-                  this.svgDraw()
-                }, 3000)
+                this.loadingAudioData = false
+                this.loadedAudioData = true
+                this.svgDraw()
+                // setTimeout(() => {
+                //   this.loadingAudioData = false
+                //   this.loadedAudioData = true
+                //   // this.loadMetadata()
+                //   this.svgDraw()
+                // }, 1000)
               },
               (err) => {
                 this.loadingAudioData = false
