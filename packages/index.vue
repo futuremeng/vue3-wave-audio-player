@@ -177,7 +177,7 @@
     ref="audio_tag"
     @ended="onFinish"
     @abort="$emit('onAbort', $event)"
-    @canplay="$emit('onCanplay', $event)"
+    @canplay="onCanplay($event)"
     @canplaythrough="$emit('onCanplaythrough', $event)"
     @durationchange="$emit('onDurationchange', $event)"
     @emptied="$emit('onEmptied', $event)"
@@ -352,6 +352,7 @@ export default {
       audioSource: null,
       loadingAudioData: false,
       loadedAudioData: false,
+      canPlay: false,
     }
   },
   beforeMount() {
@@ -399,8 +400,14 @@ export default {
     if (this.loadAudioOnmount) this.runAudioPath()
   },
   methods: {
+    onCanplay($event) {
+      console.log('onCanplay')
+      this.canPlay = true
+      this.$emit('onCanplay', $event)
+    },
     loadSong($event) {
       // done
+      console.log(this.audio.duration)
       this.durationContainer_textContent = this.calculateTime(
         this.audio.duration,
       )
@@ -418,13 +425,19 @@ export default {
       if (!this.loadAudioOnmount && !this.loadedAudioData) {
         return this.runAudioPath()
       }
+      if (!this.canPlay) {
+        return
+      }
+      console.log('this.audio.paused', this.audio.paused)
       if (this.audio.paused) {
+        console.log('play')
         this.audio.play()
         this.svg.unpauseAnimations()
         this.path2.style.display = 'block'
         this.audioPaused = false
         this.raf = requestAnimationFrame(this.whilePlaying)
       } else {
+        console.log('pause')
         this.audio.pause()
         this.svg.pauseAnimations()
         this.audioPaused = true
