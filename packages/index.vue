@@ -37,15 +37,23 @@
     </button>
     <button id="play" part="play" ref="play" v-else @click="playPause">
       <svg
-        viewBox="0 0 34 34"
-        width="34"
-        height="34"
+        :viewBox="circle ? '0 0 1024 1024' : '0 0 34 34'"
+        :width="circle ? 26 : 34"
+        :height="circle ? 26 : 34"
         part="button"
         ref="button"
       >
         <path
           id="playPathButton"
-          :d="audioPaused ? playPath : pausePath"
+          :d="
+            audioPaused
+              ? circle
+                ? playCirclePath
+                : playPath
+              : circle
+                ? pauseCirclePath
+                : pausePath
+          "
         ></path>
       </svg>
     </button>
@@ -221,6 +229,10 @@ export default {
     'onEnded',
   ],
   props: {
+    circle: {
+      type: Boolean,
+      default: false,
+    },
     title: {
       type: String,
       default: '',
@@ -301,7 +313,10 @@ export default {
         animationframes: 10,
         normalize: true,
       },
-
+      playCirclePath:
+        'M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024zM383.232 287.616v448l384-223.104-384-224.896z',
+      pauseCirclePath:
+        'M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024zM320 320v384h128V320H320z m256 0v384h128V320H576z',
       playPath:
         'M8.5 8.7c0-1.7 1.2-2.4 2.6-1.5l14.4 8.3c1.4.8 1.4 2.2 0 3l-14.4 8.3c-1.4.8-2.6.2-2.6-1.5V8.7z',
       pausePath:

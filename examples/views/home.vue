@@ -2,7 +2,7 @@
  * @Author: be_loving@163.com 
  * @Date: 2024-10-23 13:32:11
  * @LastEditors: be_loving@163.com 
- * @LastEditTime: 2024-10-28 18:11:00
+ * @LastEditTime: 2024-10-29 10:10:46
  * @FilePath: /vue3-wave-audio-player/examples/views/home.vue
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -45,6 +45,7 @@
       :index-self="2"
       :index-sync="index"
       @on-play="index = 2"
+      :circle="true"
     />
     <Vue3WaveAudioPlayer
       :wave-width="250"
